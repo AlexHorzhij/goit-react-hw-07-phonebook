@@ -9,17 +9,16 @@ import { ContactList } from '../ContactList/ContactList';
 import { useEffect } from 'react';
 
 export function Contacts() {
-    const filter = ""
-        // useSelector(state => state.contacts.filter);
+    const filter = useSelector(state => state.filter);
+
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(getContacts())
     }, [dispatch]);
     const contacts = useSelector(state => state.contacts.items);
-        const state = useSelector(state => state);
 
-    console.log(state)
+    console.log(filter)
     const filtredList = () => {
         return filter ? contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase())) : '';
     };

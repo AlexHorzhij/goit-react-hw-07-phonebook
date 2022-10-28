@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import { Item, Button, List } from './ContactList.styled';
 import { useDispatch } from 'react-redux';
-// import { contactRemove } from 'redux/contactsSlice';
-import {removeContact} from '../../redux/books/operationContacts'
-
+import { removeContact } from '../../redux/books/operationContacts';
 
 export function ContactList({ contacts }) {
     const dispatch = useDispatch();
@@ -25,3 +23,6 @@ ContactList.propTypes = {
         phone: PropTypes.string.isRequired,
     })).isRequired,
 };
+
+
+ 
