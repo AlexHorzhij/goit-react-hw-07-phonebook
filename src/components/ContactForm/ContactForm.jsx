@@ -1,9 +1,7 @@
 import { Form, FormTitle, FormInput, SubmitButton } from './ContactForm.styled';
 import {  useDispatch } from 'react-redux';
-// import { contactAdd } from 'redux/contactsSlice';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import { nanoid } from 'nanoid';
-import {addContact} from '../../redux/books/operationContacts'
+// import {addContact} from '../../redux/contacts/operationContacts';
+import { addContact } from 'redux/contacts/operationContacts';
 
 
 export function ContactForm() {
