@@ -11,7 +11,7 @@ export function ContactList({ contacts }) {
         dispatch(deleteContact(deletedContact));
     };
 
-    return (<List>{contacts.map(contact => <Item key={contact.id}>{contact.name}: {contact.phone}
+    return (<List>{contacts.map(contact => <Item key={contact.id}>{contact.name}:  {contact.phone}
         <Button id={contact.id} onClick={removeContact1}>Delete</Button></Item>)}</List>
         );
 };

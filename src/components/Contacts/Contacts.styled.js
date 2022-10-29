@@ -18,3 +18,10 @@ export const Container = styled.div`
 export const Message = styled.div`
     font-size: ${p=>p.theme.fontSize.l}; 
 `
+export const ContactsCount = styled.p`
+    font-size: ${p => p.theme.fontSize.l};
+    font-weight: ${p => p.theme.fontWeight.bolt};
+    padding-bottom: ${p => p.theme.space[3]};
+    margin-bottom: ${p => p.theme.space[4]};    
+    border-bottom: 1px solid ${p => p.theme.colors.text};
+`

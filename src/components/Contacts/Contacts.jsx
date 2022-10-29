@@ -1,5 +1,5 @@
 import React from 'react';
-import {Title, Section, Container, Message} from './Contacts.styled';
+import {Title, Section, Container, Message, ContactsCount} from './Contacts.styled';
 import { ContactForm } from '../ContactForm/ContactForm';
 import { Filter } from '../Filter/Filter';
 import { useSelector, useDispatch } from "react-redux";
@@ -22,6 +22,11 @@ export function Contacts() {
         return filter ? contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase())) : '';
     };
 
+    const contactsCount = () => {
+        console.log('ffffff');
+        return contacts.length;
+    }
+
     return <Container>
         <Section>
             <Title>Phonebook</Title>
@@ -30,7 +35,7 @@ export function Contacts() {
         <Section>
             <Title>Contacts</Title>
             <Filter />
-
+            <ContactsCount>You have {contactsCount()} contacts.</ContactsCount>
             {(filter && (filtredList().length !== 0 
             ? <ContactList contacts={filtredList()}  />
             : <Message>Сontact was not found</Message>)) ||
