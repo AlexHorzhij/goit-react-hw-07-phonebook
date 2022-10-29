@@ -40,8 +40,9 @@ export const addContact = createAsyncThunk(
             
             if (isDublicate(contacts, data)) {
                 console.log(data)
-                return Notify.warning(`${data.name} is alrady in contacts`,
-                    { timeout: 4000, position: 'center-top', width: '400px', fontSize: '28px' })
+                Notify.warning(`${data.name} is alrady in contacts`,
+                     { timeout: 4000, position: 'center-top', width: '400px', fontSize: '28px' })
+                return false;
             };
         },
     },

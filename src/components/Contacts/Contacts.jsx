@@ -4,21 +4,20 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import { Filter } from '../Filter/Filter';
 import { useSelector, useDispatch } from "react-redux";
 import { fetchContacts } from 'redux/contacts/operationContacts';
-
 import { ContactList } from '../ContactList/ContactList';
 import { useEffect } from 'react';
+import { selectContacts } from 'redux/contacts/selectorsContacts';
+import { selectFilter } from 'redux/filter/selectorsFilter';
 
 export function Contacts() {
-    const filter = useSelector(state => state.filter);
-
+    const filter = useSelector(selectFilter);
+    const contacts = useSelector(selectContacts);
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(fetchContacts())
     }, [dispatch]);
-    const contacts = useSelector(state => state.contacts.items);
 
-    console.log(filter)
     const filtredList = () => {
         return filter ? contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase())) : '';
     };
@@ -40,5 +39,4 @@ export function Contacts() {
             }
         </Section>
     </Container>
-        
 };

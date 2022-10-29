@@ -1,11 +1,10 @@
 import { SelectTitle, SelectInput, FilterWrapper, Button } from './Filter.styled';
 import { useSelector, useDispatch } from 'react-redux';
-// import { contactFilter } from 'redux/contactsSlice';
-// import { filterReducers } from 'redux/filter/reducerFilter';
+import { selectFilter } from 'redux/filter/selectorsFilter';
 import setFilter from 'redux/filter/actionsFilter';
 
 export function Filter() {
-    const serchName = useSelector(state => state.filter);
+    const serchName = useSelector(selectFilter);
     const dispatch = useDispatch();
 
     const findContact = (e) => {

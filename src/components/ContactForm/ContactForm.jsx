@@ -1,19 +1,16 @@
 import { Form, FormTitle, FormInput, SubmitButton } from './ContactForm.styled';
-import {  useDispatch } from 'react-redux';
-// import {addContact} from '../../redux/contacts/operationContacts';
+import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operationContacts';
 
 
 export function ContactForm() {
-    // const contacts = useSelector((state) => state.contacts.contacts);
     const dispatch = useDispatch();
 
-    const addContact1 = (e) => {
+    const submitForm = (e) => {
         e.preventDefault();
         const form = e.currentTarget;
         const newContactName = form.elements.name.value;
         const newContactNumber = form.elements.number.value;
-
        
         const newContact = { name: newContactName, phone: newContactNumber, };
         dispatch(addContact(newContact));
@@ -21,7 +18,7 @@ export function ContactForm() {
     };
 
     return <>
-        <Form onSubmit={addContact1}>
+        <Form onSubmit={submitForm}>
             <FormTitle> Name </FormTitle>
             <FormInput
             type="text"

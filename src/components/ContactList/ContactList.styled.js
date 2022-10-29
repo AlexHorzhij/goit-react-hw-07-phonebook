@@ -25,20 +25,3 @@ export const List = styled.ul`
     gap: ${p=>p.theme.space[3]};
     font-size: ${p=>p.theme.fontSize.l}; 
 `
-// export const OdalS = styled(Oval)`
-//   height:80px;
-//   width: 80px;
-//   color: "#4fa94d";
- 
-// `
-
-//   height={80}
-//   width={80}
-//   color="#4fa94d"
-//   wrapperStyle={{}}
-//   wrapperClass=""
-//   visible={true}
-//   ariaLabel='oval-loading'
-//   secondaryColor="#4fa94d"
-//   strokeWidth={5}
-//   strokeWidthSecondary={5}
