@@ -1,10 +1,10 @@
 import {Contacts} from "./Contacts/Contacts";
 import { Oval } from 'react-loader-spinner';
 import { useSelector } from "react-redux";
-import { selectLoading } from "redux/contacts/selectorsContacts";
+import { isLoadingFetch } from "redux/contacts/selectorsContacts";
 
 export const App = () => {
-      const isLoading = useSelector(selectLoading);
+      const isLoading = useSelector(isLoadingFetch);
 
   return (
     <div

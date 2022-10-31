@@ -1,7 +1,7 @@
 export const theme = {
     colors: {
         white: "white",
-        hover: "gray",
+        hover: "#b2b4b2",
         text: "#000",
         accent: "red",
     },

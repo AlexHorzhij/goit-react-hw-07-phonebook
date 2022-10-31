@@ -1,15 +1,17 @@
 import axios from "axios";
-import { Notify } from "notiflix";
+// import { Notify } from "notiflix";
 // import actions from "./actionsContacts";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import toast from 'react-hot-toast';
+
 
 const instanceContacts = axios.create({
     baseURL: "https://6358e7a7ff3d7bddb99383fc.mockapi.io/api",
 });
 
-const isDublicate = (contacts, newContactName) => {
-    return contacts.items.find(item => item.name.toLowerCase() === newContactName.name.toLowerCase());
-};
+// const isDublicate = (contacts, newContactName) => {
+//     return contacts.items.find(item => item.name.toLowerCase() === newContactName.name.toLowerCase());
+// };
 
 
 export const fetchContacts = createAsyncThunk(
@@ -29,23 +31,24 @@ export const addContact = createAsyncThunk(
     async (newContact, { rejectWithValue }) => {
         try {
             const { data } = await instanceContacts.post("/contacts", newContact);
+            toast.success("Contact added")
             return data;
         } catch (error) {
             rejectWithValue(error);
         }
     },
-    {
-        condition: (data, { getState }) => {
-            const { contacts } = getState();
+    // {
+    //     condition: (data, { getState }) => {
+    //         const { contacts } = getState();
             
-            if (isDublicate(contacts, data)) {
-                console.log(data)
-                Notify.warning(`${data.name} is alrady in contacts`,
-                     { timeout: 4000, position: 'center-top', width: '400px', fontSize: '28px' })
-                return false;
-            };
-        },
-    },
+    //         if (isDublicate(contacts, data)) {
+    //             console.log(data)
+    //             Notify.warning(`${data.name} is alrady in contacts`,
+    //                  { timeout: 4000, position: 'center-top', width: '400px', fontSize: '28px' })
+    //             return false;
+    //         };
+    //     },
+    // },
 );
 
 export const deleteContact = createAsyncThunk(
@@ -53,7 +56,7 @@ export const deleteContact = createAsyncThunk(
     async (id, {rejectWithValue}) => {
          try {
              const {data: deletedContact} = await instanceContacts.delete(`/contacts/${id}`);
-             console.log(deletedContact);
+             toast.success("Contact removed");
              return deletedContact;
         } catch (error) {
             rejectWithValue(error);

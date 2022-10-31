@@ -3,8 +3,10 @@ import { fetchContacts, addContact, deleteContact } from './operationContacts';
 
 const initialState = {
         items: [],
-        isLoading: false,
-        error: null
+        isLoadingFetch: false,
+        isLoadingAdd: false,
+        isLoadingDelete: false,
+        error: null,
 };
 
 export const contactsSlice = createSlice({
@@ -12,39 +14,39 @@ export const contactsSlice = createSlice({
   initialState,
   extraReducers: {
     [fetchContacts.pending]: (store) => {
-      store.isLoading = true;
+      store.isLoadingFetch = true;
       store.error = null;
     },
     [fetchContacts.fulfilled]: (store, {payload}) => {
-            store.isLoading = false;
+            store.isLoadingFetch = false;
             store.items = payload;
     },
     [fetchContacts.rejected]: (store, {payload}) => {
-            store.isLoading = false;
+            store.isLoadingFetch = false;
             store.error = payload;
     },
     [addContact.pending]: (store) => {
-            store.isLoading = true;
+            store.isLoadingAdd = true;
             store.error = null;
     },
     [addContact.fulfilled]: (store, { payload }) => {
-      store.isLoading = false;
-      store.items.push(payload);
+      store.isLoadingAdd = false;
+      store.items.unshift(payload);
     },
     [addContact.rejected]: (store, {payload}) => {
-            store.isLoading = false;
+            store.isLoadingAdd = false;
             store.error = payload;
     },
     [deleteContact.pending]: (store) => {
-            store.isLoading = true;
+            store.isLoadingDelete = true;
             store.error = null;
     },
     [deleteContact.fulfilled]: (store,  {payload} ) => {
-            store.isLoading = false;
+            store.isLoadingDelete = false;
             store.items = store.items.filter((item)=>item.id !== payload.id);
     },
     [deleteContact.rejected]: (store, {payload}) => {
-            store.isLoading = false;
+            store.isLoadingDelete = false;
             store.error = payload;
     },
   }

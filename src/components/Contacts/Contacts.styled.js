@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
-    width: 600px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     margin-bottom: ${p=>p.theme.space[5]};

@@ -1,17 +1,27 @@
-import { Form, FormTitle, FormInput, SubmitButton } from './ContactForm.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/operationContacts';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import { Form, FormTitle, FormInput, SubmitButton, Overlay, ModalWindow } from './EditContactModald';
 import { selectContacts } from 'redux/contacts/selectorsContacts';
-import toast, { Toaster } from 'react-hot-toast';
-import { isLoadingAdd } from 'redux/contacts/selectorsContacts';
-import { Oval } from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
+// const PopupWindow = () => {
+//   return ReactDOM.createPortal(
+//     <div>PopupWindow with portal</div>,
+//     document.querySelector("#modal-root")
+//   );
+// };
 
+const modalRoot = document.querySelector("#modal-root");
 
-export function ContactForm() {
+export function Modal({ img, modalClose }) {
     const contacts = useSelector(selectContacts);
-    const isLoading = useSelector(isLoadingAdd);
-
-    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        document.addEventListener('keydown', modalClose);
+        return () => {
+            document.removeEventListener('keydown', modalClose);
+        }
+    }, [modalClose]);
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -31,7 +41,8 @@ export function ContactForm() {
         form.reset();
     };
 
-    return <>
+    return createPortal(<Overlay onClick={modalClose}>
+        <ModalWindow >
         <Form onSubmit={submitForm}>
             <FormTitle> Name </FormTitle>
             <FormInput
@@ -65,5 +76,15 @@ export function ContactForm() {
             strokeWidthSecondary={5}/>}   Add Contact</SubmitButton>
         </Form>
         <Toaster toastOptions={{style: { fontSize: '24px', }}} />
-    </>
+
+        </ModalWindow>
+    </Overlay>, modalRoot);
+};
+
+Modal.propTypes = {
+    modalClose: PropTypes.func.isRequired,
+    img: PropTypes.shape({
+        largeImageURL: PropTypes.string.isRequired,
+        tags: PropTypes.string.isRequired,
+    })
 };

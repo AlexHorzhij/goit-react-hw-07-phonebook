@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-export const Item = styled.li`
+export const ButtonWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
-    font-size: ${p=>p.theme.fontSize.l}; 
-    `
+    align-items: center;
+`
 export const Button = styled.button`
     display: inline-flex;
     align-items: center;
@@ -17,10 +16,4 @@ export const Button = styled.button`
         background-color: ${p=>p.theme.colors.hover};
         color: ${p=>p.theme.colors.white};
     }
-`
-export const List = styled.ul`
-    display: flex;
-    flex-direction: column;
-    gap: ${p=>p.theme.space[3]};
-    font-size: ${p=>p.theme.fontSize.l}; 
 `

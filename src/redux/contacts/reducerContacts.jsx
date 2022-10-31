@@ -3,45 +3,48 @@ import actions from "./actionsContacts";
 
 const initialState = {
         items: [],
-        isLoading: false,
+        isLoadingFetch: false,
+        isLoadingAdd: false,
+        isLoadingDelete: false,
+
         error: null
 };
 
 export const contactsReducers = createReducer(initialState, {
         [actions.fetchCotactsLoading]: (store) => {
-                store.isLoading = true;
+                store.isLoadingFetch = true;
                 store.error = null;
         },
         [actions.fetchCotactsSuccess]: (store, { payload }) => {
-                store.isLoading = false;
+                store.isLoadingFetch = false;
                 store.items = payload;
         },
         [actions.fetchCotactsError]: (store, { payload }) => {
-                store.isLoading = false;
+                store.isLoadingFetch = false;
                 store.error = payload;
         },
         [actions.addContactsLoading]: (store) => {
-                store.isLoading = true;
+                store.isLoadingAdd = true;
                 store.error = null;
         },
         [actions.addContactsSuccess]: (store, { payload }) => {
-                store.isLoading = false;
+                store.isLoadingAdd = false;
                 store.items.push(payload);
         },
         [actions.addContactsError]: (store, { payload }) => {
-                store.isLoading = false;
+                store.isLoadingAdd = false;
                 store.error = payload;
         },
         [actions.removeContactsLoading]: (store) => {
-                store.isLoading = true;
+                store.isLoadingDelete = true;
                 store.error = null;
         },
         [actions.removeContactsSuccess]: (store, { payload }) => {
-                store.isLoading = false;
+                store.isLoadingDelete = false;
                 store.items = store.items.filter((item) => item.id !== payload);
         },
         [actions.removeContactsError]: (store, { payload }) => {
-                store.isLoading = false;
+                store.isLoadingDelete = false;
                 store.error = payload;
         },
 });

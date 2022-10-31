@@ -23,7 +23,6 @@ export function Contacts() {
     };
 
     const contactsCount = () => {
-        console.log('ffffff');
         return contacts.length;
     }
 
