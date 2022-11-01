@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { selectContacts } from 'redux/contacts/selectorsContacts';
 import { selectFilter } from 'redux/filter/selectorsFilter';
 
+
 export function Contacts() {
     const filter = useSelector(selectFilter);
     const contacts = useSelector(selectContacts);
@@ -24,7 +25,7 @@ export function Contacts() {
 
     const contactsCount = () => {
         return contacts.length;
-    }
+    };
 
     return <Container>
         <Section>

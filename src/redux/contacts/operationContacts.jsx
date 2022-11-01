@@ -64,6 +64,22 @@ export const deleteContact = createAsyncThunk(
     },
 );
 
+export const updateContact = createAsyncThunk(
+    "contacts/editContact",
+    async (updatedContact, { rejectWithValue }) => {
+        try {
+            const { data } = await instanceContacts.put(`/contacts/${updatedContact.id}`, updatedContact);
+            toast.success("Contact apdated")
+            console.log(data)
+            return data;
+        } catch (error) {
+            rejectWithValue(error);
+        }
+    },
+
+);
+
+
 
 
 

@@ -6,11 +6,9 @@ import toast, { Toaster } from 'react-hot-toast';
 import { isLoadingAdd } from 'redux/contacts/selectorsContacts';
 import { Oval } from 'react-loader-spinner';
 
-
 export function ContactForm() {
     const contacts = useSelector(selectContacts);
     const isLoading = useSelector(isLoadingAdd);
-
     const dispatch = useDispatch();
 
     const submitForm = (e) => {
@@ -30,7 +28,7 @@ export function ContactForm() {
         dispatch(addContact(newContact));
         form.reset();
     };
-
+    
     return <>
         <Form onSubmit={submitForm}>
             <FormTitle> Name </FormTitle>
@@ -62,7 +60,7 @@ export function ContactForm() {
             ariaLabel='oval-loading'
             secondaryColor="#787b78"
             strokeWidth={5}
-            strokeWidthSecondary={5}/>}   Add Contact</SubmitButton>
+                strokeWidthSecondary={5} />}   Add contact</SubmitButton>
         </Form>
         <Toaster toastOptions={{style: { fontSize: '24px', }}} />
     </>

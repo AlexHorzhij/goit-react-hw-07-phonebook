@@ -2,10 +2,13 @@ import {Contacts} from "./Contacts/Contacts";
 import { Oval } from 'react-loader-spinner';
 import { useSelector } from "react-redux";
 import { isLoadingFetch } from "redux/contacts/selectorsContacts";
+// import { selectModal } from "redux/modal/selectorsModal";
+// import { EditContactModal } from "./EditContactModal/EditContactModal";
 
 export const App = () => {
-      const isLoading = useSelector(isLoadingFetch);
-
+  const isLoading = useSelector(isLoadingFetch);
+  // const showModal = useSelector(selectModal)
+  // console.log(showModal)
   return (
     <div
       style={{
@@ -33,6 +36,7 @@ export const App = () => {
           strokeWidth={5}
           strokeWidthSecondary={5}/>}
       </div>
+        {/* {showModal && <EditContactModal/>} */}
     </div>
   );
 };

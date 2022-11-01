@@ -1,25 +1,37 @@
 import PropTypes from 'prop-types';
 import { Button, ButtonWrapper } from './ContactsListItem';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operationContacts';
 import { Oval } from 'react-loader-spinner';
 import { useState } from 'react';
+import { selectContacts } from 'redux/contacts/selectorsContacts';
+// import { showModal } from 'redux/modal/actionsModal';
+// import { selectModal } from "redux/modal/selectorsModal";
+import { EditContactModal } from "../EditContactModal/EditContactModal";
+import { setEditedContact } from "../../redux/contacts/contactsSlice";
+import { showContactEditorSet } from '../../redux/contacts/contactsSlice';
+import { selectshowContactEditor } from 'redux/contacts/selectorsContacts';
 
 export function ContactsItem({ contact }) {
+    const modalIsVisible = useSelector(selectshowContactEditor);
+
+
     const dispatch = useDispatch();
-    const [loader, setloader]=useState("")
+    const contacts = useSelector(selectContacts)
+    const [loader, setloader] = useState("");
 
     const editContact = (e) => {
         const editedContact = e.target.id;
-        console.log(editedContact);
-    }
+        const contact = contacts.find((contact) => contact.id === editedContact)
+        console.log(contact)
+        dispatch(setEditedContact(contact));
+        dispatch(showContactEditorSet(true));
+    };
     
     const removeContact = (id) => {
         setloader(id)
         dispatch(deleteContact(id));
     };
-
-        console.log('load', loader)
 
     return <>{contact.name}:  {contact.phone}
         <ButtonWrapper>{loader===contact.id && <Oval
@@ -36,7 +48,8 @@ export function ContactsItem({ contact }) {
             strokeWidthSecondary={5}/>}  
             <Button id={contact.id} onClick={editContact}>Edit</Button>
             <Button  onClick={()=>removeContact(contact.id)}>Delete</Button>
-            
+            {modalIsVisible && <EditContactModal />}
+
         </ButtonWrapper>
     </>
 };

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
+    background-color: ${p=>p.theme.colors.white};
     display: flex;
     flex-direction: column;
     font-size: ${p=>p.theme.fontSize.l};
@@ -27,7 +28,7 @@ export const SubmitButton = styled.button`
     justify-content: center;
     position: relative;
     background-color: ${p=>p.theme.colors.white};
-    width: 200px;
+    width: 150px;
     padding: ${p=>p.theme.space[1]};
     font-size: ${p=>p.theme.fontSize.m};
     border-radius: ${p=>p.theme.radii.normal};
@@ -35,4 +36,11 @@ export const SubmitButton = styled.button`
         background-color: ${p=>p.theme.colors.hover};
         color: ${p=>p.theme.colors.white};
     }
+`
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: ${p=>p.theme.space[4]};
 `
