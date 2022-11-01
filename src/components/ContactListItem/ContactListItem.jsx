@@ -5,8 +5,6 @@ import { deleteContact } from 'redux/contacts/operationContacts';
 import { Oval } from 'react-loader-spinner';
 import { useState } from 'react';
 import { selectContacts } from 'redux/contacts/selectorsContacts';
-// import { showModal } from 'redux/modal/actionsModal';
-// import { selectModal } from "redux/modal/selectorsModal";
 import { EditContactModal } from "../EditContactModal/EditContactModal";
 import { setEditedContact } from "../../redux/contacts/contactsSlice";
 import { showContactEditorSet } from '../../redux/contacts/contactsSlice';

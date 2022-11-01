@@ -1,6 +1,4 @@
 import axios from "axios";
-// import { Notify } from "notiflix";
-// import actions from "./actionsContacts";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import toast from 'react-hot-toast';
 
@@ -8,11 +6,6 @@ import toast from 'react-hot-toast';
 const instanceContacts = axios.create({
     baseURL: "https://6358e7a7ff3d7bddb99383fc.mockapi.io/api",
 });
-
-// const isDublicate = (contacts, newContactName) => {
-//     return contacts.items.find(item => item.name.toLowerCase() === newContactName.name.toLowerCase());
-// };
-
 
 export const fetchContacts = createAsyncThunk(
     "contacts/fetchAll",

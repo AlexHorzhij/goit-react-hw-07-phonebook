@@ -4,7 +4,6 @@ import { selectContacts } from 'redux/contacts/selectorsContacts';
 import toast, { Toaster } from 'react-hot-toast';
 import { updateContact } from '../../redux/contacts/operationContacts';
 import { selectEditedContact } from 'redux/contacts/selectorsContacts';
-// import { showModal } from 'redux/modal/actionsModal';
 import { setEditedContact } from 'redux/contacts/contactsSlice';
 import { showContactEditorSet } from 'redux/contacts/contactsSlice';
 
